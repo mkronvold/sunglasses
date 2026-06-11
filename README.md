@@ -29,16 +29,35 @@ Wheel up brightens (less dimming); wheel down dims (more dimming).
 
 ## Requirements
 
-- Windows 10 / 11
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) to build
-  (the published self-contained build needs no runtime installed).
+- **Windows 10 or 11** (the app uses Windows-only APIs).
+- **.NET 8 SDK** — needed to build. Install it one of these ways:
+  - winget: `winget install Microsoft.DotNet.SDK.8`
+  - or download from <https://dotnet.microsoft.com/download/dotnet/8.0>
+
+  Verify a build SDK is available (you should see an `8.0.x` entry):
+
+  ```powershell
+  dotnet --list-sdks
+  ```
+
+  > A self-contained published build (see below) runs on machines with **no**
+  > .NET installed — the runtime is bundled into the `.exe`.
+
+## Get the source
+
+```powershell
+git clone https://github.com/mkronvold/sunglasses.git
+cd sunglasses
+```
 
 ## Build & run
 
 ```powershell
-dotnet build -c Release
-dotnet run -c Release
+dotnet build -c Release      # compile
+dotnet run -c Release        # build and launch
 ```
+
+The compiled executable is at `bin\Release\net8.0-windows\Sunglasses.exe`.
 
 ## Publish a single executable
 
