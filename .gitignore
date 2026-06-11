@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+
+# Rider / Visual Studio
+.vs/
+.idea/
+*.user
+
+# Published output
+publish/
+
+# OS / editor cruft
+*~
+Thumbs.db
+.DS_Store

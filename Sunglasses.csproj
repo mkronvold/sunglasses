@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <!-- WPF relies on the app.manifest for Per-Monitor V2 DPI awareness; suppress the WinForms warning. -->
+    <NoWarn>WFAC010</NoWarn>
+    <RootNamespace>Sunglasses</RootNamespace>
+    <AssemblyName>Sunglasses</AssemblyName>
+    <Authors>Sunglasses</Authors>
+    <Product>Sunglasses Screen Dimmer</Product>
+    <Description>A fullscreen overlay to dim your display with global hotkeys</Description>
+  </PropertyGroup>
+
+</Project>
