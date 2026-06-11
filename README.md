@@ -27,6 +27,19 @@ center of the screen.
 
 Wheel up brightens (less dimming); wheel down dims (more dimming).
 
+## Install
+
+Once published to the winget community repo:
+
+```powershell
+winget install mkronvold.Sunglasses
+```
+
+Or grab the latest self-contained `Sunglasses.exe` from the
+[Releases](https://github.com/mkronvold/sunglasses/releases) page (no .NET
+install required) and run it. See [`winget/`](winget/README.md) for packaging
+details.
+
 ## Requirements
 
 - **Windows 10 or 11** (the app uses Windows-only APIs).
@@ -129,3 +142,8 @@ Views/
   future cross-platform (e.g. Linux/Avalonia) port.
 - On mixed-DPI multi-monitor setups, spanning a single window across monitors
   with different scale factors may not be pixel-perfect.
+
+## License
+
+[MIT](LICENSE) © mkronvold
+

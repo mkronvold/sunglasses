@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+PackageIdentifier: mkronvold.Sunglasses
+PackageVersion: 1.0.0
+PackageLocale: en-US
+Publisher: mkronvold
+PublisherUrl: https://github.com/mkronvold
+Author: mkronvold
+PackageName: Sunglasses
+PackageUrl: https://github.com/mkronvold/sunglasses
+License: MIT
+LicenseUrl: https://github.com/mkronvold/sunglasses/blob/main/LICENSE
+ShortDescription: Fullscreen click-through screen dimmer overlay for Windows, controlled by global hotkeys.
+Description: >-
+  Sunglasses places a full-screen, click-through black overlay on top of
+  everything to dim your display. Transparency is controlled with global
+  hotkeys (Right Alt + Mouse Wheel), the current level is shown briefly
+  on-screen, and the app lives in the system tray with optional auto-start.
+Moniker: sunglasses
+Tags:
+  - dimmer
+  - screen
+  - overlay
+  - brightness
+  - dark
+  - tray
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

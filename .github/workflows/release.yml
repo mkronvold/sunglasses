@@ -1,0 +1,60 @@
+name: Release
+
+# Build a self-contained single-file Sunglasses.exe and publish it as a
+# GitHub Release whenever a version tag (e.g. v1.0.0) is pushed.
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Derive version from tag
+        id: version
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
+          "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Publish single-file executable
+        shell: pwsh
+        run: |
+          dotnet publish -c Release -r win-x64 --self-contained `
+            -p:PublishSingleFile=true `
+            -p:IncludeNativeLibrariesForSelfExtract=true `
+            -p:Version=${{ steps.version.outputs.version }} `
+            -o publish
+
+      - name: Compute SHA256
+        id: hash
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash publish/Sunglasses.exe -Algorithm SHA256).Hash
+          "sha256=$hash" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          # Surface the hash in the run summary so the winget manifest can be updated.
+          "## Sunglasses $($env:GITHUB_REF_NAME)" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "InstallerSha256: ``$hash``" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: publish/Sunglasses.exe
+          generate_release_notes: true
+          body: |
+            Self-contained `Sunglasses.exe` for Windows x64 (no .NET install required).
+
+            **winget InstallerSha256:** `${{ steps.hash.outputs.sha256 }}`

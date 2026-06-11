@@ -14,7 +14,8 @@
     <NoWarn>WFAC010</NoWarn>
     <RootNamespace>Sunglasses</RootNamespace>
     <AssemblyName>Sunglasses</AssemblyName>
-    <Authors>Sunglasses</Authors>
+    <Version>1.0.0</Version>
+    <Authors>mkronvold</Authors>
     <Product>Sunglasses Screen Dimmer</Product>
     <Description>A fullscreen overlay to dim your display with global hotkeys</Description>
   </PropertyGroup>

@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.6.0.schema.json
+PackageIdentifier: mkronvold.Sunglasses
+PackageVersion: 1.0.0
+InstallerType: portable
+Commands:
+  - sunglasses
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://github.com/mkronvold/sunglasses/releases/download/v1.0.0/Sunglasses.exe
+    # Replace with the SHA256 printed by the Release workflow (job summary / release notes).
+    InstallerSha256: 0000000000000000000000000000000000000000000000000000000000000000
+ManifestType: installer
+ManifestVersion: 1.6.0
