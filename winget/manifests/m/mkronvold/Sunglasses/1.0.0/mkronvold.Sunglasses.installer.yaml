@@ -7,7 +7,6 @@ Commands:
 Installers:
   - Architecture: x64
     InstallerUrl: https://github.com/mkronvold/sunglasses/releases/download/v1.0.0/Sunglasses.exe
-    # Replace with the SHA256 printed by the Release workflow (job summary / release notes).
-    InstallerSha256: 0000000000000000000000000000000000000000000000000000000000000000
+    InstallerSha256: 575CEC53D2D3B95291F24F502635DC0F4F05BC2313A850EB148E30858AF0D3FB
 ManifestType: installer
 ManifestVersion: 1.6.0
