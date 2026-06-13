@@ -29,7 +29,9 @@ Wheel up brightens (less dimming); wheel down dims (more dimming).
 
 ## Install
 
-Once published to the winget community repo:
+> **Status:** the first version (1.0.0) is pending its initial submission to the
+> [winget community repo](https://github.com/microsoft/winget-pkgs). Once that PR
+> is merged, install with:
 
 ```powershell
 winget install mkronvold.Sunglasses
@@ -37,8 +39,9 @@ winget install mkronvold.Sunglasses
 
 Or grab the latest self-contained `Sunglasses.exe` from the
 [Releases](https://github.com/mkronvold/sunglasses/releases) page (no .NET
-install required) and run it. See [`winget/`](winget/README.md) for packaging
-details.
+install required) and run it. See [`winget/`](winget/README.md) for packaging,
+the one-time first-submission steps, and how new releases are auto-published to
+winget.
 
 ## Requirements
 

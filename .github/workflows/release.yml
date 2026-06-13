@@ -14,6 +14,9 @@ jobs:
   release:
     runs-on: windows-latest
 
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,3 +61,29 @@ jobs:
             Self-contained `Sunglasses.exe` for Windows x64 (no .NET install required).
 
             **winget InstallerSha256:** `${{ steps.hash.outputs.sha256 }}`
+
+  # Submit the new version to the winget community repo (microsoft/winget-pkgs)
+  # by opening a PR from a fork. Requires:
+  #   * The package already exists upstream (the first version, 1.0.0, must be
+  #     submitted manually with wingetcreate — winget-releaser only UPDATES an
+  #     existing package, it cannot create a brand-new one).
+  #   * A repo secret named WINGET_TOKEN: a classic PAT with `public_repo` scope
+  #     belonging to an account that has forked microsoft/winget-pkgs.
+  # The step self-skips when WINGET_TOKEN is not set, so the build still works
+  # before the secret is configured.
+  winget:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Submit to winget-pkgs
+        if: ${{ env.WINGET_TOKEN != '' }}
+        uses: vedantmgoyal9/winget-releaser@v2
+        env:
+          WINGET_TOKEN: ${{ secrets.WINGET_TOKEN }}
+        with:
+          identifier: mkronvold.Sunglasses
+          version: ${{ needs.release.outputs.version }}
+          release-tag: ${{ github.ref_name }}
+          installers-regex: 'Sunglasses\.exe$'
+          token: ${{ secrets.WINGET_TOKEN }}
